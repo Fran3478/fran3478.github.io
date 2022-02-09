@@ -1,0 +1,9 @@
+body{
+    background-image: url("img/fondo2.jpg");
+}
+
+th.head{
+    font-family: 'Roboto';
+    color:black;
+    font-size: 35px;
+}
