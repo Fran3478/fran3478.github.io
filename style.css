@@ -1,9 +1,26 @@
-body{
+#body{
     background-image: url("img/fondo2.jpg");
+    background-attachment: local;
+    width: auto;
+    height: 100%;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    padding: 10px 10px 10px 10px;
+    background: rgb(35, 7, 80);
+    
+}
+
+img.logo{
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 th.head{
-    font-family: 'Roboto';
+    font-family: 'Roboto'; 
     color:black;
     font-size: 35px;
 }

@@ -11,11 +11,30 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="./index.js"></script>
 </head>
-<body>
-    <div class="logo">
-        <img src="img/Rick_and_Morty_logo.png" width="300" />
+<body onload="getData()">
+    <header>
+        <div>
+            <img class="logo" src="img/Rick_and_Morty_logo.png" width="300" />
+        </div>
+    </header>
+    <div id="body">
+        <ul>
+            <li></li>
+        </ul>
+       
     </div>
-    <p id="data">Prueba</p>
-    <button type="button" onclick="getData()">get data</button>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+          <li class="page-item disabled">
+            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Anterior</a>
+          </li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item">
+            <a class="page-link" href="#">Siguiente</a>
+          </li>
+        </ul>
+    </nav>
 </body>
 </html>
