@@ -1,5 +1,4 @@
 #body{
-    background-image: url("img/fondo2.jpg");
     background-attachment: local;
     width: auto;
     height: 100%;
@@ -10,7 +9,6 @@ header {
     top: 0;
     padding: 10px 10px 10px 10px;
     background: rgb(35, 7, 80);
-    
 }
 
 img.logo{
@@ -23,4 +21,32 @@ th.head{
     font-family: 'Roboto'; 
     color:black;
     font-size: 35px;
+}
+
+li{
+    list-style: none;
+}
+
+
+
+ul{
+    
+    margin-bottom: 0;
+}
+
+p{
+    margin-bottom: 0;
+}
+
+li{
+    transition: box-shadow 0.3s ease;
+    background-color: #fff;
+    border-radius: 0.5rem;
+    margin: 1rem 0;
+    padding: 0.25rem 0;
+    cursor: pointer;
+}
+
+li:hover{
+    box-shadow: 0 0.1rem 0.4rem rgba(0,0,0,0.3);
 }
