@@ -5,17 +5,20 @@ function getData(){
         .then(response => response.json())
         .then(data=>{
             var name;
-            var image;
             for (character of data.results){
                 var li=document.createElement("li");
-                var p=document.createElement("p");
-                var img=document.createElement("img");
+                var btn=document.createElement("button");
                 name=character.name;
-                img.src=character.image;
+                btn.className="btn";
+                btn.type="button";
+                btn.onclick=showData;
                 li.id="personaje";
-                p.appendChild(document.createTextNode(name));
-                document.querySelector("#list-characters").appendChild(li).appendChild(img);
-                document.querySelector("#list-characters").appendChild(li).appendChild(p);
+                btn.appendChild(document.createTextNode(name));
+                document.querySelector("#list-characters").appendChild(li).appendChild(btn);
             }
         })
+}
+
+function showData(){
+    console.log("click");
 }

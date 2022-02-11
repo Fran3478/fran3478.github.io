@@ -25,28 +25,21 @@ th.head{
 
 li{
     list-style: none;
+    padding: 0.75rem 1.25rem;
+    margin-left: 0px;
 }
 
-
-
-ul{
-    
-    margin-bottom: 0;
+.btn{
+    font-family: 'Montserrat', sans-serif;
+    transition: font-size 0.4s;
 }
 
-p{
-    margin-bottom: 0;
+.btn:focus, .btn:hover{
+    font-size:125%;
+    background-color:#fdece0;
 }
 
-#personaje{
-    transition: box-shadow 0.3s ease;
-    background-color: #fff;
-    border-radius: 0.5rem;
-    margin: 1rem 0;
-    padding: 0.25rem 0;
-    cursor: pointer;
-}
-
-#personaje:hover{
-    box-shadow: 0 0.1rem 0.4rem rgba(0,0,0,0.3);
+#list-characters{
+    margin-left: 0px;
+    padding-left: 0px;
 }
