@@ -38,7 +38,7 @@ p{
     margin-bottom: 0;
 }
 
-li{
+#personaje{
     transition: box-shadow 0.3s ease;
     background-color: #fff;
     border-radius: 0.5rem;
@@ -47,6 +47,6 @@ li{
     cursor: pointer;
 }
 
-li:hover{
+#personaje:hover{
     box-shadow: 0 0.1rem 0.4rem rgba(0,0,0,0.3);
 }

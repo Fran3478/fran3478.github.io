@@ -12,6 +12,7 @@ function getData(){
                 var img=document.createElement("img");
                 name=character.name;
                 img.src=character.image;
+                li.id="personaje";
                 p.appendChild(document.createTextNode(name));
                 document.querySelector("#list-characters").appendChild(li).appendChild(img);
                 document.querySelector("#list-characters").appendChild(li).appendChild(p);
