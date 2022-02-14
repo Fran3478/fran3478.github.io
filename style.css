@@ -43,3 +43,30 @@ li{
     margin-left: 0px;
     padding-left: 0px;
 }
+
+.modal-header{
+    background-color: rgb(28, 107, 153);
+}
+
+.modal-title{
+    font-family: 'Monserrat', sans-serif;
+    font-size: 26px;
+    font-weight: bold;
+    color: white;
+}
+.div-img{
+    padding: 1.5rem;
+}
+.img-char{
+    width: 200px;
+    border-radius: 50%;
+    display: block;
+    margin: auto;
+}
+
+.spieces{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+}
