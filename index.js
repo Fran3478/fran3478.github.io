@@ -11,7 +11,8 @@ function getData(){
                 name=character.name;
                 btn.className="btn";
                 btn.type="button";
-                btn.onclick=showData;
+                btn.setAttribute("data-bs-toggle", "modal");
+                btn.setAttribute("data-bs-target", "#exampleModal");
                 li.id="personaje";
                 btn.appendChild(document.createTextNode(name));
                 document.querySelector("#list-characters").appendChild(li).appendChild(btn);
