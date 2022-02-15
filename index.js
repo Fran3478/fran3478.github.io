@@ -5,7 +5,7 @@ function getData(){
         .then(response => response.json())
         .then(data=>{
             var name;
-            for (character of data.results){
+            data.results.forEach(function(character){
                 var li=document.createElement("li");
                 var btn=document.createElement("button");
                 name=character.name;
@@ -21,7 +21,7 @@ function getData(){
                 li.id="personaje";
                 btn.appendChild(document.createTextNode(name));
                 document.querySelector("#list-characters").appendChild(li).appendChild(btn);
-            }
+            });
         })
 }
 
