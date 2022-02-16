@@ -26,7 +26,6 @@ function getData(){
 }
 
 var exampleModal = document.getElementById('exampleModal')
-console.log("ok");
 exampleModal.addEventListener('show.bs.modal', event => {
     var button = event.relatedTarget
     var name = button.getAttribute('char-name')
