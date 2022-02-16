@@ -5,7 +5,7 @@ function getData(){
         .then(response => response.json())
         .then(data=>{
             var name;
-            data.results.forEach(function(character){
+            data.results.forEach(character => {
                 var li=document.createElement("li");
                 var btn=document.createElement("button");
                 name=character.name;
@@ -27,7 +27,8 @@ function getData(){
 
 var exampleModal = document.getElementById('exampleModal')
 console.log("ok");
-exampleModal.addEventListener('show.bs.modal', function (event) {var button = event.relatedTarget
+exampleModal.addEventListener('show.bs.modal', event => {
+    var button = event.relatedTarget
     var name = button.getAttribute('char-name')
     var urlImg = button.getAttribute('url-img')
     var species = button.getAttribute('char-species')
@@ -45,6 +46,6 @@ exampleModal.addEventListener('show.bs.modal', function (event) {var button = ev
     document.querySelector("#modalBody").appendChild(p);
 })
 
-$('.modal').on('hidden.bs.modal', function () {
-    $(this).removeData('modal').find('.modal-body').html('')
+$('.modal').on('hidden.bs.modal', () => {
+    $('.modal').removeData('modal').find('.modal-body').html('')
 });

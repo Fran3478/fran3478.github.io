@@ -23,7 +23,7 @@ th.head{
     font-size: 35px;
 }
 
-li{
+#personaje{
     list-style: none;
     padding: 0.75rem 1.25rem;
     margin-left: 0px;
