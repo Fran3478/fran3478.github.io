@@ -60,17 +60,15 @@ function listDesign(numPage=1, itemAmount){
 
 function goPage(pag){
     var urlPaginada;
-    if (typeof pag === "string"){
-        switch (pag) {
-            case "prev":
-                urlPaginada= document.getElementById("prev").getAttribute("prev-url");
-                break;
-            case "next":
-                urlPaginada= document.getElementById("next").getAttribute("next-url");
-                break;
-        }
-    } else{
-        urlPaginada=urlAlterna + pag;
+    switch (pag) {
+        case "prev":
+            urlPaginada= document.getElementById("prev").getAttribute("prev-url");
+            break;
+        case "next":
+            urlPaginada= document.getElementById("next").getAttribute("next-url");
+            break;
+        default:
+            urlPaginada=urlAlterna + pag;
     }
     getData(urlPaginada);
 }
