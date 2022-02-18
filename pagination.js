@@ -21,8 +21,8 @@ function listDesign(numPage=1, itemAmount){
             prevA.className="page-link";
             prevA.setAttribute("tabindex", "-1")
             prevA.setAttribute("aria-disabled", "true")
-            prevA.setAttribute("onclick", "goPage(this)")
-            prevA.setAttribute("title", -1)
+            prevA.setAttribute("onclick", "goPage(title)")
+            prevA.setAttribute("title", "prev")
             if (numPage==1){
                 prevLi.className="page-item disabled";
             } else{
@@ -50,8 +50,8 @@ function listDesign(numPage=1, itemAmount){
             } else{
                 nextLi.className="page-item";
             }
-            nextA.setAttribute("onclick", "goPage(this)")
-            nextA.setAttribute("title", +1)
+            nextA.setAttribute("onclick", "goPage(title)")
+            nextA.setAttribute("title", "next")
             nextLi.appendChild(nextA).appendChild(document.createTextNode("Siguiente"));
             document.querySelector("#page-container").append(nextLi);
         })
@@ -59,12 +59,24 @@ function listDesign(numPage=1, itemAmount){
 }
 
 function goPage(pag){
-    var urlPaginada=urlAlterna + pag;
+    var urlPaginada;
+    if (typeof pag === "string"){
+        switch (pag) {
+            case "prev":
+                urlPaginada= document.getElementById("prev").getAttribute("prev-url");
+                break;
+            case "next":
+                urlPaginada= document.getElementById("next").getAttribute("next-url");
+                break;
+        }
+    } else{
+        urlPaginada=urlAlterna + pag;
+    }
     getData(urlPaginada);
 }
 
-$(document).ready(function(){
-    $("#page-container").click(function(){
+$(document).ready(() => {
+    $("#page-container").click(() => {
         $("#list-characters").empty();
     })
 })
