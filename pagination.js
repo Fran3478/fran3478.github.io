@@ -1,23 +1,26 @@
 const urlOriginaL="https://rickandmortyapi.com/api/character";
 const urlAlterna="https://rickandmortyapi.com/api/character/?page=";
+var url=urlOriginaL;
+var numPage = 1;
+var itemAmount;
 
-
-function listDesign(numPage=1, itemAmount){
+function listDesign(){
     var numPages;
-    fetch(urlOriginaL)
+    fetch(url)
         .then(response => response.json())
         .then(data=>{
             numPages = data.info.pages;
-            if (itemAmount == undefined){
-                if (numPages>4){
-                    itemAmount= 6;
-                } else{
-                    itemAmount= numPages;
-                }
-            };
+            var nextUrl=data.info.next;
+            var prevUrl=data.info.prev;
+            if (numPages>4){
+                    itemAmount=6;
+            } else{
+                itemAmount= numPages;
+            }
             var prevLi=document.createElement("li");
             var prevA=document.createElement("a");
             prevLi.id="prev";
+            prevLi.setAttribute("prev-url", prevUrl);
             prevA.className="page-link";
             prevA.setAttribute("tabindex", "-1")
             prevA.setAttribute("aria-disabled", "true")
@@ -34,7 +37,11 @@ function listDesign(numPage=1, itemAmount){
                 var li=document.createElement("li");
                 var a=document.createElement("a");
                 li.id=i;
-                li.className="page-item";
+                if (numPage==i){
+                    li.className="page-item active";
+                } else{
+                    li.className="page-item";
+                }
                 a.className="page-link";
                 a.setAttribute("onclick", "goPage(title)")
                 a.setAttribute("title", i)
@@ -44,6 +51,7 @@ function listDesign(numPage=1, itemAmount){
             var nextLi=document.createElement("li");
             var nextA=document.createElement("a");
             nextLi.id="next";
+            nextLi.setAttribute("next-url", nextUrl);
             nextA.className="page-link";
             if (numPage==numPages){
                 nextLi.className="page-item disabled";
@@ -55,26 +63,29 @@ function listDesign(numPage=1, itemAmount){
             nextLi.appendChild(nextA).appendChild(document.createTextNode("Siguiente"));
             document.querySelector("#page-container").append(nextLi);
         })
-    
 }
 
 function goPage(pag){
-    var urlPaginada;
     switch (pag) {
         case "prev":
-            urlPaginada= document.getElementById("prev").getAttribute("prev-url");
+            url= document.getElementById("prev").getAttribute("prev-url");
+            numPage--;
             break;
         case "next":
-            urlPaginada= document.getElementById("next").getAttribute("next-url");
+            url= document.getElementById("next").getAttribute("next-url");
+            numPage++;
             break;
         default:
-            urlPaginada=urlAlterna + pag;
+            url=urlAlterna + pag;
+            numPage=parseInt(pag);
     }
-    getData(urlPaginada);
+    getData(url);
+    listDesign();
 }
 
 $(document).ready(() => {
     $("#page-container").click(() => {
         $("#list-characters").empty();
+        $("#page-container").empty();
     })
 })

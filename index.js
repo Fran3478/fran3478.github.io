@@ -3,12 +3,6 @@ function getData(url = "https://rickandmortyapi.com/api/character"){
         .then(response => response.json())
         .then(data=>{
             var name;
-            var nextUrl=data.info.next;
-            var prevUrl=data.info.prev;
-            var prev=document.getElementById("prev");
-            prev.setAttribute("prev-url", prevUrl);
-            var next=document.getElementById("next");
-            next.setAttribute("next-url", nextUrl);
             data.results.forEach(character => {
                 var li=document.createElement("li");
                 var btn=document.createElement("button");
