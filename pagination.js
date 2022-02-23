@@ -11,6 +11,7 @@ function getPage(){
 function pagDesign(numPag, pages, next, prev){
     var prevLi=document.createElement("li");
     var prevA=document.createElement("a");
+    var num;
     prevA.className="page-link";
     prevA.setAttribute("tabindex", "-1")
     prevA.setAttribute("aria-disabled", "true")
@@ -19,7 +20,8 @@ function pagDesign(numPag, pages, next, prev){
     } else{
         prevLi.className="page-item";
         prevA.setAttribute("onclick", "goToPage(title)");
-        prevA.setAttribute("title","prev");
+        num=prev[prev.length-1];
+        prevA.setAttribute("title",num);
     }
     prevLi.appendChild(prevA).appendChild(document.createTextNode("Anterior"));
     document.querySelector("#page-container").append(prevLi);
@@ -40,7 +42,9 @@ function pagDesign(numPag, pages, next, prev){
     } else{
         nextLi.className="page-item";
         nextA.setAttribute("onclick", "goToPage(title)");
-        nextA.setAttribute("title", "next");
+        var aux=next.toString();
+        num=aux[aux.length-1];
+        nextA.setAttribute("title", num);
     }
     nextLi.appendChild(nextA).appendChild(document.createTextNode("Siguiente"));
     document.querySelector("#page-container").append(nextLi);
