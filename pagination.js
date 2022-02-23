@@ -22,8 +22,7 @@ function pagDesign(numPag, pages, next, prev){
     } else{
         prevLi.className="page-item";
         prevA.setAttribute("onclick", "goToPage(title)");
-        num=prev[prev.length-1];
-        prevA.setAttribute("title",num);
+        prevA.setAttribute("title","prev");
     }
     prevLi.appendChild(prevA).appendChild(document.createTextNode("Anterior"));
     document.querySelector("#page-container").append(prevLi);
@@ -65,8 +64,7 @@ function pagDesign(numPag, pages, next, prev){
         nextLi.className="page-item";
         nextA.setAttribute("onclick", "goToPage(title)");
         var aux=next.toString();
-        num=aux[aux.length-1];
-        nextA.setAttribute("title", num);
+        nextA.setAttribute("title", "next");
     }
     nextLi.appendChild(nextA).appendChild(document.createTextNode("Siguiente"));
     document.querySelector("#page-container").append(nextLi);
@@ -81,6 +79,15 @@ function goToPage(pag){
     if (value==null){
         value="1";
     }
-    newUrl = url+pag;
+    switch (pag) {
+        case "prev":
+            newUrl = url+(parseInt(value)-1).toString();
+            break;
+        case "next":
+            newUrl =url+(parseInt(value)+1).toString();
+            break;
+        default:
+            newUrl = url+pag;
+    }
     window.location.replace(newUrl);
 }
