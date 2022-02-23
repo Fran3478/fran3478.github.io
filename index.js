@@ -1,4 +1,9 @@
-function getData(url = "https://rickandmortyapi.com/api/character"){
+const urlBase ="https://rickandmortyapi.com/api/character/";
+
+function getData(){
+    var  param="?page=";
+    var numPag=getPage();
+    var url=urlBase+param+numPag;
     fetch(url)
         .then(response => response.json())
         .then(data=>{
@@ -20,6 +25,8 @@ function getData(url = "https://rickandmortyapi.com/api/character"){
                 btn.appendChild(document.createTextNode(name));
                 document.querySelector("#list-characters").appendChild(li).appendChild(btn);
             });
+            var pagData = data.info;
+            pagDesign(numPag, pagData.pages, pagData.next, pagData.prev);
         })
 }
 
