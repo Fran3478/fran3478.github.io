@@ -12,14 +12,14 @@ header {
 }
 
 img.logo{
-    display:block;
+    display: block;
     margin-left: auto;
     margin-right: auto;
 }
 
 th.head{
     font-family: 'Roboto'; 
-    color:black;
+    color: black;
     font-size: 35px;
 }
 
@@ -35,8 +35,8 @@ th.head{
 }
 
 .btn:focus, .btn:hover{
-    font-size:125%;
-    background-color:#fdece0;
+    font-size: 125%;
+    background-color: #fdece0;
 }
 
 #list-characters{
@@ -69,4 +69,8 @@ th.head{
     font-size: 20px;
     text-align: center;
     font-weight: bold;
+}
+
+.page-link{
+    cursor: pointer;
 }

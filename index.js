@@ -1,27 +1,27 @@
 const urlBase ="https://rickandmortyapi.com/api/character/";
 
 function getData(){
-    var  param="?page=";
-    var numPag=getPage();
-    var url=urlBase+param+numPag;
+    var  param = "?page=";
+    var numPag = getPage();
+    var url = urlBase+param+numPag;
     fetch(url)
         .then(response => response.json())
-        .then(data=>{
+        .then(data =>{
             var name;
             data.results.forEach(character => {
-                var li=document.createElement("li");
-                var btn=document.createElement("button");
-                name=character.name;
-                urlImg=character.image;
-                species=character.species;
-                btn.className="btn";
-                btn.type="button";
+                var li = document.createElement("li");
+                var btn = document.createElement("button");
+                name = character.name;
+                urlImg = character.image;
+                species = character.species;
+                btn.className = "btn";
+                btn.type = "button";
                 btn.setAttribute("data-bs-toggle", "modal");
                 btn.setAttribute("data-bs-target", "#exampleModal");
                 btn.setAttribute("char-name", name);
                 btn.setAttribute("url-img", urlImg);
                 btn.setAttribute("char-species", species)
-                li.id="personaje";
+                li.id = "personaje";
                 btn.appendChild(document.createTextNode(name));
                 document.querySelector("#list-characters").appendChild(li).appendChild(btn);
             });
@@ -40,11 +40,11 @@ exampleModal.addEventListener('show.bs.modal', event => {
     var div=document.createElement("div");
     var img=document.createElement("img");
     var p=document.createElement("p");
-    div.className="div-img";
+    div.className = "div-img";
     img.src=urlImg;
-    img.className="img-char";
+    img.className = "img-char";
     p.appendChild(document.createTextNode(species))
-    p.className="spieces";
+    p.className = "spieces";
     modalTitle.textContent = name
     document.querySelector("#modalBody").appendChild(div).appendChild(img);
     document.querySelector("#modalBody").appendChild(p);
