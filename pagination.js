@@ -45,7 +45,7 @@ function pagDesign (numPag, pages, next, prev) {
     a.className = 'page-link'
     a.setAttribute('title', i)
     a.setAttribute('onclick', 'goToPage(title)')
-    if (i == numPag) {li.className = 'page-item active'}
+    if (i == numPag) { li.className = 'page-item active' }
     li.appendChild(a).appendChild(document.createTextNode(i))
     document.querySelector('#page-container').append(li)
   }
