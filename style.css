@@ -1,72 +1,77 @@
-#body{
-    background-attachment: local;
-    width: auto;
-    height: 100%;
+#body {
+  background-attachment: local;
+  width: auto;
+  height: 100%;
 }
 
 header {
-    position: sticky;
-    top: 0;
-    padding: 10px 10px 10px 10px;
-    background: rgb(35, 7, 80);
+  position: sticky;
+  top: 0;
+  padding: 10px 10px 10px 10px;
+  background: rgb(35, 7, 80);
 }
 
-img.logo{
-    display:block;
-    margin-left: auto;
-    margin-right: auto;
+img.logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-th.head{
-    font-family: 'Roboto'; 
-    color:black;
-    font-size: 35px;
+th.head {
+  font-family: "Roboto";
+  color: black;
+  font-size: 35px;
 }
 
-#personaje{
-    list-style: none;
-    padding: 0.75rem 1.25rem;
-    margin-left: 0px;
+#personaje {
+  list-style: none;
+  padding: 0.75rem 1.25rem;
+  margin-left: 0px;
 }
 
-.btn{
-    font-family: 'Montserrat', sans-serif;
-    transition: font-size 0.4s;
+.btn {
+  font-family: "Montserrat", sans-serif;
+  transition: font-size 0.4s;
 }
 
-.btn:focus, .btn:hover{
-    font-size:125%;
-    background-color:#fdece0;
+.btn:focus,
+.btn:hover {
+  font-size: 125%;
+  background-color: #fdece0;
 }
 
-#list-characters{
-    margin-left: 0px;
-    padding-left: 0px;
+#list-characters {
+  margin-left: 0px;
+  padding-left: 0px;
 }
 
-.modal-header{
-    background-color: rgb(28, 107, 153);
+.modal-header {
+  background-color: rgb(28, 107, 153);
 }
 
-.modal-title{
-    font-family: 'Monserrat', sans-serif;
-    font-size: 26px;
-    font-weight: bold;
-    color: white;
+.modal-title {
+  font-family: "Monserrat", sans-serif;
+  font-size: 26px;
+  font-weight: bold;
+  color: white;
 }
-.div-img{
-    padding: 1.5rem;
+.div-img {
+  padding: 1.5rem;
 }
-.img-char{
-    width: 200px;
-    border-radius: 50%;
-    display: block;
-    margin: auto;
+.img-char {
+  width: 200px;
+  border-radius: 50%;
+  display: block;
+  margin: auto;
 }
 
-.spieces{
-    font-family: 'Montserrat', sans-serif;
-    font-size: 20px;
-    text-align: center;
-    font-weight: bold;
+.spieces {
+  font-family: "Montserrat", sans-serif;
+  font-size: 20px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.page-link {
+  cursor: pointer;
 }
