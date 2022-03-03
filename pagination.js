@@ -2,9 +2,7 @@ function getPage () {
   const queryString = window.location.search
   const urlParams = new URLSearchParams(queryString)
   let value = urlParams.get('pag')
-  if (value == null) {
-    value = '1'
-  }
+  value = value == undefined ? 1 : value
   return (value)
 }
 
@@ -47,9 +45,7 @@ function pagDesign (numPag, pages, next, prev) {
     a.className = 'page-link'
     a.setAttribute('title', i)
     a.setAttribute('onclick', 'goToPage(title)')
-    if (i == numPag) {
-      li.className = 'page-item active'
-    }
+    if (i == numPag) {li.className = 'page-item active'}
     li.appendChild(a).appendChild(document.createTextNode(i))
     document.querySelector('#page-container').append(li)
   }
@@ -73,9 +69,7 @@ function goToPage (pag) {
   let value = urlParams.get('pag')
   const url = window.location.origin + window.location.pathname + '?pag='
   let newUrl
-  if (value == null) {
-    value = '1'
-  }
+  value = value == undefined ? 1 : value
   switch (pag) {
     case 'prev':
       newUrl = url + (parseInt(value) - 1).toString()
