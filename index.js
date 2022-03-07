@@ -10,10 +10,16 @@ function getData () {
       let name
       data.results.forEach(character => {
         const li = document.createElement('li')
+        const row = document.createElement('div')
+        const colMain = document.createElement('div')
+        const colAux = document.createElement('div')
         const btn = document.createElement('button')
         name = character.name
         urlImg = character.image
         species = character.species
+        row.className = 'row'
+        colMain.className = 'col-sm-12'
+        colAux.className = 'col-sm-0'
         btn.className = 'btn'
         btn.type = 'button'
         btn.setAttribute('data-bs-toggle', 'modal')
@@ -22,8 +28,10 @@ function getData () {
         btn.setAttribute('url-img', urlImg)
         btn.setAttribute('char-species', species)
         li.id = 'personaje'
+        colMain.appendChild(li).appendChild(btn)
         btn.appendChild(document.createTextNode(name))
-        document.querySelector('.list-characters').appendChild(li).appendChild(btn)
+        document.querySelector('.list-characters').appendChild(colMain)
+        document.querySelector('.list-characters').appendChild(colAux)
       })
       const pagData = data.info
       pagDesign(numPag, pagData.pages, pagData.next, pagData.prev)
