@@ -23,7 +23,7 @@ function getData () {
         btn.setAttribute('char-species', species)
         li.id = 'personaje'
         btn.appendChild(document.createTextNode(name))
-        document.querySelector('#list-characters').appendChild(li).appendChild(btn)
+        document.querySelector('.list-characters').appendChild(li).appendChild(btn)
       })
       const pagData = data.info
       pagDesign(numPag, pagData.pages, pagData.next, pagData.prev)

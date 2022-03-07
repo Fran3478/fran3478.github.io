@@ -1,22 +1,15 @@
-#body {
-  width: auto;
-  height: 100%;
-}
-
-.head {
-  min-width: 25rem;
-  width: 100%;
-  align-items: center;
-  position: sticky;
-  top: 0;
+.navbar {
   background-color: rgb(35, 7, 80);
 }
 
 .logo {
   width: 300px;
-  display: block;
   margin-left: auto;
   margin-right: auto;
+}
+
+main {
+  margin-top: 8rem;
 }
 
 #personaje {
@@ -36,7 +29,7 @@
   background-color: #fdece0;
 }
 
-#list-characters {
+.list-characters {
   margin-left: 0px;
   padding-left: 0px;
 }
