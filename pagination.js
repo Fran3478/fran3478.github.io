@@ -82,7 +82,6 @@ function pagDesign (numPag, pages, next, prev) {
     nextA.setAttribute('onclick', 'goToPage(title)')
     nextA.setAttribute('title', 'next')
   }
-  nextDiv.className = 'col-2'
   nextDiv.appendChild(nextLi).appendChild(nextA).appendChild(document.createTextNode('Siguiente'))
   document.querySelector('#page-container').append(nextDiv)
 }
