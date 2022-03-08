@@ -18,8 +18,8 @@ function getData () {
         urlImg = character.image
         species = character.species
         row.className = 'row'
-        colMain.className = 'col-sm-12'
-        colAux.className = 'col-sm-0'
+        colMain.className = 'col-12'
+        colAux.className = 'col'
         btn.className = 'btn'
         btn.type = 'button'
         btn.setAttribute('data-bs-toggle', 'modal')
