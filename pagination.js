@@ -48,18 +48,18 @@ function pagDesign (numPag, pages, next, prev) {
       case 1:
       case 2:
         if ((i === max - 2) || (i === max - 1)) {
-          div.className = 'd-none d-sm-block d-md-block'
+          div.className = 'd-none d-sm-none d-md-block'
         }
         break
       case pages - 1:
       case pages:
         if ((i === min) || (i === min + 1)) {
-          div.className = 'd-none d-sm-block d-md-block'
+          div.className = 'd-none d-sm-none d-md-block'
         }
         break
       default:
         if ((i === min) || (i === max - 1)) {
-          div.className = 'd-none d-sm-block d-md-block'
+          div.className = 'd-none d-sm-none d-md-block'
         }
     }
     a.className = 'page-link'
