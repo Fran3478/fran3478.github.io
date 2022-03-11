@@ -4,9 +4,9 @@ function getData () {
   const paginationData = getPage()
   const numPag = paginationData.pag
   const filterName = paginationData.filterName
-  if (filterName !== '') {
+  if (filterName != undefined) {
     var param = '?page=' + numPag + '&name=' + filterName
-  } else{
+  } else {
     var param = '?page=' + numPag
   }
   const url = urlBase + param
@@ -40,9 +40,15 @@ function getData () {
         document.querySelector('.list-characters').appendChild(colAux)
       })
       const pagData = data.info
+      console.log(pagData.pages)
       pagDesign(numPag, pagData.pages, pagData.next, pagData.prev)
     })
 }
+
+/*function filter(){
+  const name = $('#nameInput').val()
+  goToPage('1', name)
+}*/
 
 const exampleModal = document.getElementById('exampleModal')
 exampleModal.addEventListener('show.bs.modal', event => {
@@ -74,3 +80,12 @@ $(document).ready(() => {
     goToPage('1', name)
   })
 })
+
+/*$(document).ready(() => {
+  $("#nameInput").keyup(function(event) {
+    if (event.keyCode === 13) {
+      delay
+      $("#nameButton").click();
+    }
+  })
+})*/

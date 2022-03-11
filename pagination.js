@@ -5,7 +5,7 @@ function getPage () {
   pag = pag == undefined ? 1 : pag
   let filterName = urlParams.get('name')
   filterName = filterName == undefined ? '' : filterName
-  return {pag, filterName}
+  return { pag, filterName }
 }
 
 function pagDesign (numPag, pages, next, prev) {
@@ -29,7 +29,11 @@ function pagDesign (numPag, pages, next, prev) {
     case 2:
     case 3:
       min = 1
-      max = 6
+      if (pages < 6){
+        max = pages + 1
+      } else{
+        max = 6
+      }
       break
     case pages - 2:
     case pages - 1:
@@ -90,16 +94,11 @@ function goToPage (pag, nameNew) {
   const queryString = window.location.search
   const urlParams = new URLSearchParams(queryString)
   let value = urlParams.get('pag')
-  let name = urlParams.get('name')
+  const name = urlParams.get('name')
   const url = window.location.origin + window.location.pathname + '?pag='
   let newUrl
   let nameFinal
   value = value == undefined ? 1 : value
-  if (nameNew == undefined && name != undefined) {
-    nameFinal = name
-  } else {
-    nameFinal = nameNew
-  }
   switch (pag) {
     case 'prev':
       newUrl = url + (parseInt(value) - 1).toString()
@@ -110,6 +109,12 @@ function goToPage (pag, nameNew) {
     default:
       newUrl = url + pag
   }
-  newUrl = newUrl + '&name=' + nameFinal
+  if (nameNew == undefined && name != undefined) {
+    nameFinal = name
+    newUrl = newUrl + '&name=' + nameFinal
+  } else if (nameNew != undefined){
+    nameFinal = nameNew
+    newUrl = newUrl + '&name=' + nameFinal
+  }
   window.location.replace(newUrl)
 }
