@@ -38,7 +38,11 @@ function pagDesign (numPag, pages, next, prev) {
     case pages - 2:
     case pages - 1:
     case pages:
-      min = pages - 4
+      if (pages < 5){
+        min = 1
+      }else{
+        min = pages - 4
+      }
       max = pages + 1
       break
     default:
