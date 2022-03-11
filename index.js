@@ -1,9 +1,15 @@
 const urlBase = 'https://rickandmortyapi.com/api/character/'
 
 function getData () {
-  const param = '?page='
-  const numPag = getPage()
-  const url = urlBase + param + numPag
+  const paginationData = getPage()
+  const numPag = paginationData.pag
+  const filterName = paginationData.filterName
+  if (filterName !== '') {
+    var param = '?page=' + numPag + '&name=' + filterName
+  } else{
+    var param = '?page=' + numPag
+  }
+  const url = urlBase + param
   fetch(url)
     .then(response => response.json())
     .then(data => {
@@ -20,7 +26,7 @@ function getData () {
         row.className = 'row'
         colMain.className = 'col-12'
         colAux.className = 'col'
-        btn.className = 'btn'
+        btn.className = 'buton'
         btn.type = 'button'
         btn.setAttribute('data-bs-toggle', 'modal')
         btn.setAttribute('data-bs-target', '#exampleModal')
@@ -60,4 +66,11 @@ exampleModal.addEventListener('show.bs.modal', event => {
 
 $('.modal').on('hidden.bs.modal', () => {
   $('.modal').removeData('modal').find('.modal-body').html('')
+})
+
+$(document).ready(() => {
+  $('#nameButton').on('click',() => {
+    var name = $('#nameInput').val();
+    goToPage('1', name)
+  })
 })

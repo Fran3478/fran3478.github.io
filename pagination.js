@@ -1,9 +1,11 @@
 function getPage () {
   const queryString = window.location.search
   const urlParams = new URLSearchParams(queryString)
-  let value = urlParams.get('pag')
-  value = value == undefined ? 1 : value
-  return (value)
+  let pag = urlParams.get('pag')
+  pag = pag == undefined ? 1 : pag
+  let filterName = urlParams.get('name')
+  filterName = filterName == undefined ? '' : filterName
+  return {pag, filterName}
 }
 
 function pagDesign (numPag, pages, next, prev) {
@@ -12,7 +14,6 @@ function pagDesign (numPag, pages, next, prev) {
   const prevDiv = document.createElement('div')
   let min, max
   prevA.className = 'page-link'
-  prevA.setAttribute('tabindex', '-1')
   prevA.setAttribute('aria-disabled', 'true')
   if (prev == null) {
     prevLi.className = 'page-item disabled'
@@ -85,13 +86,20 @@ function pagDesign (numPag, pages, next, prev) {
   document.querySelector('#page-container').append(nextDiv)
 }
 
-function goToPage (pag) {
+function goToPage (pag, nameNew) {
   const queryString = window.location.search
   const urlParams = new URLSearchParams(queryString)
   let value = urlParams.get('pag')
+  let name = urlParams.get('name')
   const url = window.location.origin + window.location.pathname + '?pag='
   let newUrl
+  let nameFinal
   value = value == undefined ? 1 : value
+  if (nameNew == undefined && name != undefined) {
+    nameFinal = name
+  } else {
+    nameFinal = nameNew
+  }
   switch (pag) {
     case 'prev':
       newUrl = url + (parseInt(value) - 1).toString()
@@ -102,5 +110,6 @@ function goToPage (pag) {
     default:
       newUrl = url + pag
   }
+  newUrl = newUrl + '&name=' + nameFinal
   window.location.replace(newUrl)
 }
