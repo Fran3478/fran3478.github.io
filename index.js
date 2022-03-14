@@ -43,7 +43,7 @@ function getData () {
       console.log(pagData.pages)
       pagDesign(numPag, pagData.pages, pagData.next, pagData.prev)
     })
-}
+  }
 
 /*function filter(){
   const name = $('#nameInput').val()
@@ -69,6 +69,12 @@ exampleModal.addEventListener('show.bs.modal', event => {
   document.querySelector('#modalBody').appendChild(div).appendChild(img)
   document.querySelector('#modalBody').appendChild(p)
 })
+
+window.onload = () => {
+  $('#onload').fadeOut();
+  $('body').removeClass('hidden');
+  getData();
+}
 
 $('.modal').on('hidden.bs.modal', () => {
   $('.modal').removeData('modal').find('.modal-body').html('')
