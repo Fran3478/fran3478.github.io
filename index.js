@@ -10,40 +10,44 @@ function getData () {
     var param = '?page=' + numPag
   }
   const url = urlBase + param
-  fetch(url)
-    .then(response => response.json())
-    .then(data => {
-      let name
-      data.results.forEach(character => {
-        const li = document.createElement('li')
-        const row = document.createElement('div')
-        const colMain = document.createElement('div')
-        const colAux = document.createElement('div')
-        const btn = document.createElement('button')
-        name = character.name
-        urlImg = character.image
-        species = character.species
-        row.className = 'row'
-        colMain.className = 'col-12'
-        colAux.className = 'col'
-        btn.className = 'buton'
-        btn.type = 'button'
-        btn.setAttribute('data-bs-toggle', 'modal')
-        btn.setAttribute('data-bs-target', '#exampleModal')
-        btn.setAttribute('char-name', name)
-        btn.setAttribute('url-img', urlImg)
-        btn.setAttribute('char-species', species)
-        li.id = 'personaje'
-        colMain.appendChild(li).appendChild(btn)
-        btn.appendChild(document.createTextNode(name))
-        document.querySelector('.list-characters').appendChild(colMain)
-        document.querySelector('.list-characters').appendChild(colAux)
+  fetch(url).then(response => {
+    if (response.ok){
+      response.json().then(data => {
+        let name
+        data.results.forEach(character => {
+          const li = document.createElement('li')
+          const row = document.createElement('div')
+          const colMain = document.createElement('div')
+          const colAux = document.createElement('div')
+          const btn = document.createElement('button')
+          name = character.name
+          urlImg = character.image
+          species = character.species
+          row.className = 'row'
+          colMain.className = 'col-12'
+          colAux.className = 'col'
+          btn.className = 'buton'
+          btn.type = 'button'
+          btn.setAttribute('data-bs-toggle', 'modal')
+          btn.setAttribute('data-bs-target', '#exampleModal')
+          btn.setAttribute('char-name', name)
+          btn.setAttribute('url-img', urlImg)
+          btn.setAttribute('char-species', species)
+          li.id = 'personaje'
+          colMain.appendChild(li).appendChild(btn)
+          btn.appendChild(document.createTextNode(name))
+          document.querySelector('.list-characters').appendChild(colMain)
+          document.querySelector('.list-characters').appendChild(colAux)
+        })
+        const pagData = data.info
+        console.log(pagData.pages)
+        pagDesign(numPag, pagData.pages, pagData.next, pagData.prev)
       })
-      const pagData = data.info
-      console.log(pagData.pages)
-      pagDesign(numPag, pagData.pages, pagData.next, pagData.prev)
-    })
-  }
+    } else {
+      console.log('el personaje no existe')
+    }
+  })
+}
 
 /*function filter(){
   const name = $('#nameInput').val()
