@@ -29,7 +29,7 @@ function pagDesign (numPag, pages, next, prev) {
     case 2:
     case 3:
       min = 1
-      if (pages < 6){
+      if (pages < 5){
         max = pages + 1
       } else{
         max = 6
@@ -56,19 +56,36 @@ function pagDesign (numPag, pages, next, prev) {
     switch (parseInt(numPag)) {
       case 1:
       case 2:
-        if ((i === max - 2) || (i === max - 1)) {
-          div.className = 'd-none d-sm-none d-md-block'
+        if (pages > 4 ){
+          if (i === max - 2 || i === max - 1) {
+          div.className = 'd-none d-sm-block d-md-block'
+          }
+        } else if (pages === 4 && i === max - 1){
+          div.className = 'd-none d-sm-block d-md-block'
+        }
+        break
+      case 3:
+        if (pages > 4 ){
+          if (i === max - 1 || i === min) {
+            div.className = 'd-none d-sm-block d-md-block'
+          }
+        } else if (pages === 4 && i === min){
+          div.className = 'd-none d-sm-block d-md-block'
         }
         break
       case pages - 1:
       case pages:
-        if ((i === min) || (i === min + 1)) {
-          div.className = 'd-none d-sm-none d-md-block'
-        }
+        if (pages > 4 ){
+          if (i === min || i === min + 1) {
+            div.className = 'd-none d-sm-block d-md-block'
+          }
+        } else if (pages === 4  && i === min){
+            div.className = 'd-none d-sm-block d-md-block'
+          }
         break
       default:
-        if ((i === min) || (i === max - 1)) {
-          div.className = 'd-none d-sm-none d-md-block'
+        if (i === min || i === max - 1) {
+          div.className = 'd-none d-sm-block d-md-block'
         }
     }
     a.className = 'page-link'
