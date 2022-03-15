@@ -40,7 +40,6 @@ function getData () {
           document.querySelector('.list-characters').appendChild(colAux)
         })
         const pagData = data.info
-        console.log(pagData.pages)
         pagDesign(numPag, pagData.pages, pagData.next, pagData.prev)
       })
     } else {
