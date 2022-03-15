@@ -44,7 +44,9 @@ function getData () {
         pagDesign(numPag, pagData.pages, pagData.next, pagData.prev)
       })
     } else {
-      console.log('el personaje no existe')
+      const errorMessage = 'There is no one called ' + filterName
+      document.getElementById('error-message').innerHTML = errorMessage
+      $('div').removeClass('hidden');
     }
   })
 }
