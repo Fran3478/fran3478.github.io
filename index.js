@@ -43,17 +43,12 @@ function getData () {
         pagDesign(numPag, pagData.pages, pagData.next, pagData.prev)
       })
     } else {
-      const errorMessage = 'There is no one called ' + filterName
+      const errorMessage = "Ups, sorry we couldn't find that one"
       document.getElementById('error-message').innerHTML = errorMessage
-      $('div').removeClass('hidden');
+      $('label').removeClass('hidden');
     }
   })
 }
-
-/*function filter(){
-  const name = $('#nameInput').val()
-  goToPage('1', name)
-}*/
 
 const exampleModal = document.getElementById('exampleModal')
 exampleModal.addEventListener('show.bs.modal', event => {
@@ -84,19 +79,3 @@ window.onload = () => {
 $('.modal').on('hidden.bs.modal', () => {
   $('.modal').removeData('modal').find('.modal-body').html('')
 })
-
-$(document).ready(() => {
-  $('#nameButton').on('click',() => {
-    var name = $('#nameInput').val();
-    goToPage('1', name)
-  })
-})
-
-/*$(document).ready(() => {
-  $("#nameInput").keyup(function(event) {
-    if (event.keyCode === 13) {
-      delay
-      $("#nameButton").click();
-    }
-  })
-})*/
