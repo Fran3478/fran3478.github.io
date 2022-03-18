@@ -2,6 +2,8 @@
   display: none;
 }
 
+/*Error messege section*/
+
 #error {
   display: flex;
   align-items: center;
@@ -24,6 +26,8 @@
   padding: 3vw;
 }
 
+/*Logo section*/
+
 .navbar {
   background-color: transparent; /*rgb(35, 7, 80);
   opacity: 40%;*/
@@ -38,10 +42,12 @@
 }
 
 .logo {
-  width: 25%;
+  width: 25vh;
   margin-left: auto;
   margin-right: auto;
 }
+
+/*Search nav section*/
 
 .searchnav {
   overflow: hidden;
@@ -53,38 +59,107 @@
 
 .search-container {
   padding-top: 20vh;
+  padding-bottom: 15vh;
   width: auto;
   height: 30vh;
 }
 
-.form {
+#form {
   display: flex;
+  margin-left: auto;
+  margin-right: auto;
+
+  width: 70%;
 }
 
 .search-container input {
-  margin-left: auto;
+  /*margin-left: auto;
   font-size: 17px;
-  width: 60%;
+  width: 60%;*/
+  font-size: 17px;
   opacity: 40%;
   /*background-color: transparent;*/
 }
 
 .search-container button {
-  margin-right: auto;
   display: block;
   border: transparent;
   border-radius: 0.25rem;
   width: 5%;
-  min-width: 40px;
   opacity: 40%;
+  min-width: 40px;
 }
 
-.search-container input:hover,
-.search-container input:focus,
 .search-container button:hover,
-.search-container button:focus {
+.search-container button:focus,
+.search-container input:hover,
+.search-container input:focus {
   opacity: 100%;
 }
+
+/*Character list section*/
+
+.list-characters {
+  margin-top: 0.5vh;
+  border-left: 1px solid lightgray;
+}
+
+#personaje {
+  list-style: none;
+  padding: 0.75rem 1.25rem;
+  margin-left: 0px;
+}
+
+.buton {
+  font-family: "Montserrat", sans-serif;
+  transition: font-size 0.3s ease, background-color 0.6s ease;
+  text-align: left;
+  border: 1px solid transparent;
+  background-color: transparent;
+  padding: 6px 12px 6px 12px;
+  border-radius: 5px;
+}
+
+.buton:focus,
+.buton:hover {
+  font-size: 125%;
+  background-color: #fdece0;
+}
+
+/*Modal section*/
+
+.modal-header {
+  background-color: rgb(28, 107, 153);
+}
+
+.modal-title {
+  font-family: "Monserrat", sans-serif;
+  font-size: 26px;
+  font-weight: bold;
+  color: white;
+}
+
+.img-char {
+  width: 200px;
+  border-radius: 50%;
+  display: block;
+  margin: auto;
+}
+
+.spieces {
+  font-family: "Montserrat", sans-serif;
+  font-size: 20px;
+  text-align: center;
+  font-weight: bold;
+}
+
+/*Pagination*/
+
+.page-link {
+  cursor: pointer;
+}
+
+/*Loader animation*/
 
 .wrapper {
   width: 200px;
@@ -170,60 +245,4 @@
   left: auto;
   right: 15%;
   animation-delay: 0.3s;
-}
-
-#personaje {
-  list-style: none;
-  padding: 0.75rem 1.25rem;
-  margin-left: 0px;
-}
-
-.buton {
-  font-family: "Montserrat", sans-serif;
-  transition: font-size 0.3s ease, background-color 0.6s ease;
-  text-align: left;
-  border: 1px solid transparent;
-  background-color: transparent;
-  padding: 6px 12px 6px 12px;
-  border-radius: 5px;
-}
-
-.buton:focus,
-.buton:hover {
-  font-size: 125%;
-  background-color: #fdece0;
-}
-
-.list-characters {
-  margin-left: 0px;
-  padding-left: 0px;
-}
-
-.modal-header {
-  background-color: rgb(28, 107, 153);
-}
-
-.modal-title {
-  font-family: "Monserrat", sans-serif;
-  font-size: 26px;
-  font-weight: bold;
-  color: white;
-}
-
-.img-char {
-  width: 200px;
-  border-radius: 50%;
-  display: block;
-  margin: auto;
-}
-
-.spieces {
-  font-family: "Montserrat", sans-serif;
-  font-size: 20px;
-  text-align: center;
-  font-weight: bold;
-}
-
-.page-link {
-  cursor: pointer;
 }

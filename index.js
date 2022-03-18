@@ -11,7 +11,7 @@ function getData () {
   }
   const url = urlBase + param
   fetch(url).then(response => {
-    if (response.ok){
+    if (response.ok) {
       response.json().then(data => {
         let name
         data.results.forEach(character => {
@@ -23,9 +23,6 @@ function getData () {
           name = character.name
           urlImg = character.image
           species = character.species
-          row.className = 'row'
-          colMain.className = 'col-12'
-          colAux.className = 'col'
           btn.className = 'buton'
           btn.type = 'button'
           btn.setAttribute('data-bs-toggle', 'modal')
@@ -34,10 +31,9 @@ function getData () {
           btn.setAttribute('url-img', urlImg)
           btn.setAttribute('char-species', species)
           li.id = 'personaje'
-          colMain.appendChild(li).appendChild(btn)
+          li.appendChild(btn)
           btn.appendChild(document.createTextNode(name))
-          document.querySelector('.list-characters').appendChild(colMain)
-          document.querySelector('.list-characters').appendChild(colAux)
+          document.querySelector('.list-characters').appendChild(li)
         })
         const pagData = data.info
         pagDesign(numPag, pagData.pages, pagData.next, pagData.prev)
@@ -45,7 +41,7 @@ function getData () {
     } else {
       const errorMessage = "Ups, sorry we couldn't find that one"
       document.getElementById('error-message').innerHTML = errorMessage
-      $('label').removeClass('hidden');
+      $('label').removeClass('hidden')
     }
   })
 }
@@ -71,9 +67,9 @@ exampleModal.addEventListener('show.bs.modal', event => {
 })
 
 window.onload = () => {
-  $('#onload').fadeOut();
-  $('body').removeClass('hidden');
-  getData();
+  $('#onload').fadeOut()
+  $('body').removeClass('hidden')
+  getData()
 }
 
 $('.modal').on('hidden.bs.modal', () => {
