@@ -137,5 +137,5 @@ function goToPage (pag, nameNew) {
     nameFinal = nameNew
     newUrl = newUrl + '&name=' + nameFinal
   }
-  window.location.replace(newUrl)
+  window.location.href = newUrl
 }

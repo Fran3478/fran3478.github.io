@@ -29,15 +29,14 @@
 /*Logo section*/
 
 .navbar {
-  background-color: transparent; /*rgb(35, 7, 80);
-  opacity: 40%;*/
-  background-image: url(img/fondo-logo.png);
+  background-image: linear-gradient(black, green);
   background-size: 100vw 20vh;
+  height: 10%;
 }
 
 .logo-background {
   width: 100vw;
-  height: 15vh;
+  height: 20vh;
   display: flex;
 }
 
@@ -68,14 +67,12 @@
   display: flex;
   margin-left: auto;
   margin-right: auto;
-
   width: 70%;
 }
 
 .search-container input {
-  /*margin-left: auto;
-  font-size: 17px;
-  width: 60%;*/
+  margin-left: auto;
+  margin-right: auto;
   font-size: 17px;
   opacity: 40%;
   /*background-color: transparent;*/
@@ -95,6 +92,49 @@
 .search-container input:hover,
 .search-container input:focus {
   opacity: 100%;
+}
+
+/*Side bar section*/
+
+.sidebar {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  #pagination-container,
+  .searchnav,
+  .main {
+    padding-left: 180px;
+  }
+  .sidebar {
+    position: fixed;
+    top: 10%;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    display: block;
+    padding: 20px;
+    overflow-x: hidden;
+    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+    background-color: #f5f5f5;
+    border-right: 1px solid #eee;
+    width: 180px;
+  }
+}
+.nav-sidebar {
+  margin-right: -21px; /* 20px padding + 1px border */
+  margin-bottom: 20px;
+  margin-left: -20px;
+}
+.nav-sidebar > li > a {
+  padding-right: 20px;
+  padding-left: 20px;
+}
+.nav-sidebar > .active > a,
+.nav-sidebar > .active > a:hover,
+.nav-sidebar > .active > a:focus {
+  color: #fff;
+  background-color: #428bca;
 }
 
 /*Character list section*/
