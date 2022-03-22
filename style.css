@@ -160,7 +160,7 @@
   border-radius: 5px;
 }
 
-.buton:focus,
+.buton::selection,
 .buton:hover {
   font-size: 125%;
   background-color: #fdece0;
