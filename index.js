@@ -15,25 +15,56 @@ function getData () {
       response.json().then(data => {
         let name
         data.results.forEach(character => {
-          const li = document.createElement('li')
+          const container = document.createElement('div')
           const row = document.createElement('div')
-          const colMain = document.createElement('div')
-          const colAux = document.createElement('div')
-          const btn = document.createElement('button')
+          const colImg = document.createElement('div')
+          const img = document.createElement('img')
+          const colData = document.createElement('div')
+          const cardBody = document.createElement('div')
+          const cardTittle = document.createElement('h2')
+          const cardStatus = document.createElement('p')
+          const statusIcon = document.createElement('span')
+          /*const li = document.createElement('li')
+          const btn = document.createElement('button')*/
           name = character.name
-          urlImg = character.image
+          container.className = 'card mb-3'
+          container.style = 'max-width: 540px;'
+          row.className = 'row g-0'
+          colImg.className = 'img-col col-md-4'
+          let imgUrl = character.image 
+          img.src = imgUrl
+          img.className = 'char-img img-fluid'
+          img.setAttribute('alt', '...')
+          colData.className = 'col-md-8'
+          cardBody.className = 'card-body'
+          cardTittle.className = 'card-tittle'
+          cardStatus.className = 'card-text'
+          let charStatus = character.status
           species = character.species
-          btn.className = 'buton'
-          btn.type = 'button'
-          btn.setAttribute('data-bs-toggle', 'modal')
-          btn.setAttribute('data-bs-target', '#exampleModal')
-          btn.setAttribute('char-name', name)
-          btn.setAttribute('url-img', urlImg)
-          btn.setAttribute('char-species', species)
-          li.id = 'personaje'
-          li.appendChild(btn)
-          btn.appendChild(document.createTextNode(name))
-          document.querySelector('.list-characters').appendChild(li)
+          switch (charStatus) {
+            case 'Alive':
+              statusIcon.className = 'status-icon-alive'
+              break;
+            case 'Dead':
+              statusIcon.className = 'status-icon-dead'
+              break;
+            default:
+              statusIcon.className = 'status-icon-unknown'
+          }
+          cardTittle.setAttribute('data-bs-toggle', 'modal')
+          cardTittle.setAttribute('data-bs-target', '#exampleModal')
+          cardTittle.setAttribute('char-name', name)
+          cardTittle.setAttribute('url-img', imgUrl)
+          cardTittle.setAttribute('char-species', species)
+          container.id = 'personaje'
+          cardTittle.appendChild(document.createTextNode(name))
+          cardStatus.append(statusIcon, document.createTextNode(charStatus + ' - ' + species))
+          colImg.appendChild(img)
+          cardBody.append(cardTittle, cardStatus)
+          colData.appendChild(cardBody)
+          container.appendChild(row).append(colImg, colData)
+          
+          document.querySelector('.list-characters').appendChild(container)
         })
         const pagData = data.info
         pagDesign(numPag, pagData.pages, pagData.next, pagData.prev)

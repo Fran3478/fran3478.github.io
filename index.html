@@ -33,18 +33,7 @@
     <img class="logo" src="img/Rick_and_Morty_logo.png">
   </nav>
 
-  <div class="container-fluid">
-    <div class="row">
-      <div class="sidebar">
-        <ul class="navsidebar">
-          <li><a class="item-sidebar active" href="index.html">Characters</a></li>
-        </ul>
-        <ul class="navsidebar">
-          <li><a class="item-sidebar" href="location.html">Locations</a></li>
-        </ul>
-      </div>
-
-      <div class="searchnav">
+  <div class="searchnav">
         <div class="search-container">
           <form id="form" class="form-floating mb-3" action="" method="get">
             <input class="form-control" id='nameInput' type="text" placeholder="Search..." name="name">
@@ -53,29 +42,34 @@
           </form>
         </div>
       </div>
-      
-      <div class="col-sm-12 main">
-        <div class="row">
-          <div class="container">
-            <div class="list-characters col-8"></div>
-          </div>
-          <div id="error">
-            <label id="error-message" class="hidden"></label>
-          </div>
-          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel"></h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div id="modalBody" class="modal-body"></div>
-              </div>
+
+  <div class="container-fluid">
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel"></h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
+            <div id="modalBody" class="modal-body"></div>
           </div>
         </div>
       </div>
-    </div>
+      <div class="sidebar">
+        <ul class="navsidebar">
+          <li><a class="item-sidebar active" href="index.html">Characters</a></li>
+        </ul>
+        <ul class="navsidebar">
+          <li><a class="item-sidebar" href="location.html">Locations</a></li>
+        </ul>
+      </div>
+      
+      <div class="main">
+          <div class="list-characters container"></div>
+          <div id="error">
+            <label id="error-message" class="hidden"></label>
+          </div>
+      </div>
   </div>
   <footer id="pagination-container">
     <nav id="nav" aria-label="Page navigation example">
