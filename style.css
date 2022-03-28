@@ -289,18 +289,19 @@
 @media only screen and (max-width: 500px) {
   .main {
     grid-template-columns: repeat(6, 1.5rem);
-    grid-gap: 10px;
+    grid-gap: 0.2rem;
     padding: 0;
   }
   .cards {
     grid-column: 2 / span 6;
     grid-template-columns: repeat(6, 1.5rem);
-    grid-gap: 20px;
+    grid-gap: 0.2rem;
   }
   .card {
     width: auto;
-    min-width: auto;
-    min-height: 25rem;
+    min-height: 60vh;
+    min-width: 7rem;
+    display: block;
   }
 }
 
