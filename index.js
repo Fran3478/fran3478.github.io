@@ -15,29 +15,22 @@ function getData () {
       response.json().then(data => {
         let name
         data.results.forEach(character => {
-          const container = document.createElement('div')
-          const row = document.createElement('div')
-          const colImg = document.createElement('div')
+          const card = document.createElement('div')
+          const imgContainer = document.createElement('div')
           const img = document.createElement('img')
-          const colData = document.createElement('div')
-          const cardBody = document.createElement('div')
-          const cardTittle = document.createElement('h2')
+          const textContainer = document.createElement('div')
+          const cardTittle = document.createElement('p')
+          const cardInfo = document.createElement('div')
           const cardStatus = document.createElement('p')
           const statusIcon = document.createElement('span')
-          /*const li = document.createElement('li')
-          const btn = document.createElement('button')*/
           name = character.name
-          container.className = 'card mb-3'
-          container.style = 'max-width: 540px;'
-          row.className = 'row g-0'
-          colImg.className = 'img-col col-md-4'
+          card.className = 'card'
+          imgContainer.className = 'card__image-container'
           let imgUrl = character.image 
           img.src = imgUrl
-          img.className = 'char-img img-fluid'
-          img.setAttribute('alt', '...')
-          colData.className = 'col-md-8'
-          cardBody.className = 'card-body'
-          cardTittle.className = 'card-tittle'
+          textContainer.className = 'card__content'
+          cardTittle.className = 'card__title text--medium'
+          cardInfo.className = 'card__info'
           cardStatus.className = 'card-text'
           let charStatus = character.status
           species = character.species
@@ -56,15 +49,14 @@ function getData () {
           cardTittle.setAttribute('char-name', name)
           cardTittle.setAttribute('url-img', imgUrl)
           cardTittle.setAttribute('char-species', species)
-          container.id = 'personaje'
           cardTittle.appendChild(document.createTextNode(name))
           cardStatus.append(statusIcon, document.createTextNode(charStatus + ' - ' + species))
-          colImg.appendChild(img)
-          cardBody.append(cardTittle, cardStatus)
-          colData.appendChild(cardBody)
-          container.appendChild(row).append(colImg, colData)
+          imgContainer.appendChild(img)
+          cardInfo.appendChild(cardStatus)
+          textContainer.append(cardTittle, cardStatus)
+          card.append(imgContainer, textContainer)
           
-          document.querySelector('.list-characters').appendChild(container)
+          document.querySelector('.cards').appendChild(card)
         })
         const pagData = data.info
         pagDesign(numPag, pagData.pages, pagData.next, pagData.prev)
