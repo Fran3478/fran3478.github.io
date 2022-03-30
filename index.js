@@ -44,11 +44,11 @@ function getData () {
             default:
               statusIcon.className = 'status-icon-unknown'
           }
-          cardTittle.setAttribute('data-bs-toggle', 'modal')
-          cardTittle.setAttribute('data-bs-target', '#exampleModal')
-          cardTittle.setAttribute('char-name', name)
-          cardTittle.setAttribute('url-img', imgUrl)
-          cardTittle.setAttribute('char-species', species)
+          card.setAttribute('data-bs-toggle', 'modal')
+          card.setAttribute('data-bs-target', '#exampleModal')
+          card.setAttribute('char-name', name)
+          card.setAttribute('url-img', imgUrl)
+          card.setAttribute('char-species', species)
           cardTittle.appendChild(document.createTextNode(name))
           cardStatus.append(statusIcon, document.createTextNode(charStatus + ' - ' + species))
           imgContainer.appendChild(img)
