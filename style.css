@@ -27,8 +27,7 @@
 }
 
 #error-message {
-  width: 90vw;
-  max-width: 50rem;
+  width: minmax(auto, 50rem);
   border: solid lightgray;
   background-color: lightgray;
   border-radius: 0.4rem;
