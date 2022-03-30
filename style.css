@@ -294,7 +294,7 @@
   .cards {
     grid-column-end: 1 / span 6;
     grid-template-columns: repeat(6, 1fr);
-    grid-gap: 10px;
+    grid-gap: 30px;
   }
   .card {
     grid-column-end: span 6;
