@@ -259,11 +259,6 @@
   margin-bottom: 20px;
 }
 
-.card__title:hover {
-  color: #f5b128;
-  cursor: pointer;
-}
-
 .card__info {
   display: flex;
   align-self: end;
