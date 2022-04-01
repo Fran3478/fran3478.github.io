@@ -69,6 +69,29 @@ function getData () {
   })
 }
 
+function openNav() {
+  document.getElementById("sidebar").style.width = "250px";
+}
+
+function closeNav() {
+  document.getElementById("sidebar").style.width = "0";
+}
+/*function opennav(){
+  document.getElementById('sidebar').style.display = 'block'
+  document.getElementById('sidebar').style.width = '9rem'
+  document.getElementById('open').style.display = 'none'
+  document.getElementById('close').style.display = 'block'
+  document.getElementById('pagination-container').style.marginLeft = '9rem'
+  document.getElementsByClassName('searchnav').style.marginLeft = '9rem'
+  document.getElementsByClassName('main-container').style.marginLeft = '9rem'
+}
+
+function closenav(){
+  document.getElementById('sidebar').style.display = 'none'
+  document.getElementById('close').style.display = 'none'
+  document.getElementById('open').style.display = 'block'
+}*/
+
 const exampleModal = document.getElementById('exampleModal')
 exampleModal.addEventListener('show.bs.modal', event => {
   const button = event.relatedTarget

@@ -43,9 +43,10 @@
 /*Logo section*/
 
 .navbar {
+  
   background-image: linear-gradient(black, green);
   background-size: 100vw 20vh;
-  height: 10%;
+  height: 10vh;
 }
 
 .logo-background {
@@ -62,17 +63,77 @@
 
 /*Search nav section*/
 
+#sidebar{
+  margin-top: 10vh;
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.toggle-container{
+  margin-top: .5rem;
+  margin-left: .5rem;
+}
+
+.togglesidebar{
+  color: white;
+  font-size:30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.togglesidebar:hover,
+.togglesidebar:active{
+  font-size: 40px;
+}
+
+.item-sidebar{
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+.item-sidebar:hover,
+.active{
+  color: #f1f1f1;
+  font-size: 30px;
+}
+
+.closebtn {
+  text-decoration: none;
+  color: #818181;
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.closebtn:hover {
+  color: #f1f1f1;
+}
+
 .searchnav {
+  margin-top: 10vh;
   overflow: hidden;
   background-image: url(img/search-background.jpeg);
   background-position: center center;
   background-repeat: no-repeat;
-  background-size: 100vw;
+  background-size: cover;
 }
 
 .search-container {
-  padding-top: 20vh;
-  padding-bottom: 15vh;
+  padding-top: calc(15vh - 25px - ((3.5rem + 2px) / 2));
+  padding-bottom: calc(15vh - ((3.5rem + 2px) / 2));
   width: auto;
   height: 30vh;
 }
@@ -107,95 +168,8 @@
   opacity: 100%;
 }
 
-/*Side bar section*/
-
-.sidebar {
-  display: none;
-}
-
-@media (min-width: 768px) {
-  #pagination-container,
-  .searchnav,
-  .main-container {
-    padding-left: 9rem;
-  }
-  .sidebar {
-    position: fixed;
-    top: 10%;
-    bottom: 0;
-    left: 0;
-    z-index: 1000;
-    display: table-column;
-    padding: 1rem 0px 1rem 1rem;
-    overflow-x: hidden;
-    overflow-y: auto;
-    background-color: rgb(238, 238, 238);
-    width: 9rem;
-  }
-}
-.navsidebar {
-  list-style: none;
-  padding-left: 0px;
-  margin-right: 0px;
-  margin-bottom: 20px;
-  margin-left: -20px;
-}
-.navsidebar > li > a {
-  position: static;
-  display: block;
-  padding: 20px 15px;
-}
-
-.item-sidebar {
-  text-decoration: none;
-  font-family: "Montserrat", sans-serif;
-  transition: font-size 0.3s ease, background-color 0.6s ease;
-}
-
-.item-sidebar:hover {
-  font-size: 125%;
-  background-color: rgb(197, 197, 197);
-}
-
-.active {
-  background-color: #428bca;
-  color: #fff;
-  font-size: larger;
-}
 
 /*Character list section*/
-
-/*.list-characters {
-  margin: 2rem;
-}
-
-.card {
-  border-radius: 0.5rem;
-  overflow: hidden;
-}
-
-.img-col {
-  display: inherit;
-  max-height: 300px;
-}
-
-.char-img {
-  display: inherit;
-  overflow: hidden;
-  width: 100%;
-  left: 0px;
-  top: 0px;
-  object-fit: cover;
-}
-
-.card-tittle:hover {
-  color: #f5b128;
-  cursor: pointer;
-}
-
-.card-tittle {
-  font-weight: bolder !important;
-}*/
 
 .margin {
   margin: 2rem;
@@ -228,14 +202,15 @@
   max-height: 15rem;
   border-radius: 0.5rem;
   overflow: hidden;
-  grid-column-end: span 6;
+  grid-column-end: span 3;
   display: flex;
   flex-direction: row;
   cursor: pointer;
   transition: all 0.3s ease 0s;
 }
 
-.card:hover {
+.card:hover,
+.card:active {
   transform: translateY(-7px);
   box-shadow: 10px 5px 5px grey;
 }
@@ -265,29 +240,24 @@
   align-items: center;
 }
 
-@media only screen and (max-width: 1460px) {
+@media only screen and (max-width: 1700px) {
   .card {
     width: minmax(auto, 48rem);
-    grid-column-end: span 12;
-    margin: 0 20% 0 20%;
+    grid-column-end: span 6;
+    margin: 0 10% 0 10%;
   }
 }
 
-@media only screen and (max-width: 920px) {
+@media only screen and (max-width: 1190px) {
   .card {
-    flex-direction: column;
-    max-height: 40rem;
-    height: minmax(auto, 40rem);
+    grid-column-end: span 12;
+    margin: 0 10% 0 10%;
   }
 
-  .card__image-container {
-    display: flex;
-    max-height: 16rem;
-    max-width: 100%;
-  }
+  
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 800px) {
   .main {
     grid-template-columns: repeat(6, 1fr);
     grid-gap: 10px;
@@ -297,7 +267,16 @@
     grid-template-columns: repeat(6, 1fr);
     grid-gap: 30px;
   }
+  .card__image-container {
+    display: flex;
+    max-height: 16rem;
+    max-width: 100%;
+  }
   .card {
+    margin: 0 10% 0 10%;
+    flex-direction: column;
+    max-height: 40rem;
+    height: minmax(auto, 40rem);
     grid-column-end: span 6;
   }
 }
