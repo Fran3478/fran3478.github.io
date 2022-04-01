@@ -103,7 +103,7 @@
   transition: 0.3s;
 }
 .item-sidebar:hover,
-.active{
+.activeitem{
   color: #f1f1f1;
   font-size: 30px;
 }
