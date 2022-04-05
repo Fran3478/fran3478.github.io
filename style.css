@@ -311,33 +311,6 @@
   border-radius: 50%;
 }
 
-/*Modal section*/
-
-.modal-header {
-  background-color: rgb(28, 107, 153);
-}
-
-.modal-title {
-  font-family: "Monserrat", sans-serif;
-  font-size: 26px;
-  font-weight: bold;
-  color: white;
-}
-
-.img-char {
-  width: 200px;
-  border-radius: 50%;
-  display: block;
-  margin: auto;
-}
-
-.spieces {
-  font-family: "Montserrat", sans-serif;
-  font-size: 20px;
-  text-align: center;
-  font-weight: bold;
-}
-
 /*Pagination*/
 
 .page-link {
@@ -433,4 +406,50 @@
   left: auto;
   right: 15%;
   animation-delay: 0.3s;
+}
+
+/*Modal section*/
+
+.modal-header {
+  background-color: rgb(28, 107, 153);
+}
+
+.modal-title {
+  font-family: "Monserrat", sans-serif;
+  font-size: 26px;
+  font-weight: bold;
+  color: white;
+}
+
+.div-text{
+  padding-top: 20px;
+}
+
+.img-char {
+  width: 150px;
+  border-radius: 50%;
+  display: block;
+  margin: auto;
+}
+
+.info {
+  font-family: "Montserrat", sans-serif;
+  font-size: 17px;
+  font-weight:lighter;
+}
+
+#modalload {
+  position:relative;
+  top: 0;
+  left: 0;
+  transform: none;
+  margin-left:auto;
+  margin-right:auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.text{
+  font-weight:bold;
+  font-size: 21px;
 }

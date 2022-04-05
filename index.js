@@ -27,6 +27,13 @@ function getData () {
           card.className = 'card'
           imgContainer.className = 'card__image-container'
           let imgUrl = character.image 
+          let lastLocation = character.location.name
+          let origin = character.origin.name
+          const fstEpisodeUrl = character.episode[0]
+          let totalEpisodes = 0
+          character.episode.forEach(() => {
+            totalEpisodes++
+          })
           img.src = imgUrl
           textContainer.className = 'card__content'
           cardTittle.className = 'card__title text--medium'
@@ -49,6 +56,10 @@ function getData () {
           card.setAttribute('char-name', name)
           card.setAttribute('url-img', imgUrl)
           card.setAttribute('char-species', species)
+          card.setAttribute('last-location', lastLocation)
+          card.setAttribute('origin', origin)
+          card.setAttribute('fstepisode-url', fstEpisodeUrl)
+          card.setAttribute('total-episodes', totalEpisodes)
           cardTittle.appendChild(document.createTextNode(name))
           cardStatus.append(statusIcon, document.createTextNode(charStatus + ' - ' + species))
           imgContainer.appendChild(img)
@@ -67,6 +78,10 @@ function getData () {
       $('label').removeClass('hidden')
     }
   })
+  .then(() =>{
+    $('#onload').fadeOut()
+    $('#main-cards').removeClass('hidden')
+    })
 }
 
 function openNav() {
@@ -76,45 +91,72 @@ function openNav() {
 function closeNav() {
   document.getElementById("sidebar").style.width = "0";
 }
-/*function opennav(){
-  document.getElementById('sidebar').style.display = 'block'
-  document.getElementById('sidebar').style.width = '9rem'
-  document.getElementById('open').style.display = 'none'
-  document.getElementById('close').style.display = 'block'
-  document.getElementById('pagination-container').style.marginLeft = '9rem'
-  document.getElementsByClassName('searchnav').style.marginLeft = '9rem'
-  document.getElementsByClassName('main-container').style.marginLeft = '9rem'
-}
-
-function closenav(){
-  document.getElementById('sidebar').style.display = 'none'
-  document.getElementById('close').style.display = 'none'
-  document.getElementById('open').style.display = 'block'
-}*/
 
 const exampleModal = document.getElementById('exampleModal')
 exampleModal.addEventListener('show.bs.modal', event => {
-  const button = event.relatedTarget
-  const name = button.getAttribute('char-name')
-  const urlImg = button.getAttribute('url-img')
-  const species = button.getAttribute('char-species')
+  const card = event.relatedTarget
+  $('#modalload').show()
+  const fstEpisodeUrl = card.getAttribute('fstepisode-url')
+  const name = card.getAttribute('char-name')
   const modalTitle = exampleModal.querySelector('.modal-title')
-  const div = document.createElement('div')
-  const img = document.createElement('img')
-  const p = document.createElement('p')
-  div.className = 'div-img'
-  img.src = urlImg
-  img.className = 'img-char'
-  p.appendChild(document.createTextNode(species))
-  p.className = 'spieces'
   modalTitle.textContent = name
-  document.querySelector('#modalBody').appendChild(div).appendChild(img)
-  document.querySelector('#modalBody').appendChild(p)
+  fetch(fstEpisodeUrl)
+    .then(response => response.json())
+    .then(data => {
+      $('#modalload').fadeOut()
+      $('#modalBody').removeClass('hidden')
+      const urlImg = card.getAttribute('url-img')
+      const lastLocation = card.getAttribute('last-location')
+      const origin = card.getAttribute('origin')
+      const totalEpisodes = card.getAttribute('total-episodes')
+      const episodeName = data.name
+      const episodeCode = data.episode
+      const div = document.createElement('div')
+      const img = document.createElement('img')
+      const textdiv = document.createElement('div')
+      const pOrigin = document.createElement('p')
+      const pOriginSpan = document.createElement('span')
+      const pLastLocation = document.createElement('p')
+      const pLastLocationSpan = document.createElement('span')
+      const pEpisode = document.createElement('p')
+      const pEpisodeSpan = document.createElement('span')
+      const pTotalEp = document.createElement('p')
+      const pTotalEpSpan = document.createElement('span')
+      div.className = 'div-img'
+      img.src = urlImg
+      img.className = 'img-char'
+      textdiv.className = 'div-text'
+      pOriginSpan.appendChild(document.createTextNode('Origin: '))
+      pOriginSpan.className = 'info text'
+      pOrigin.appendChild(document.createTextNode(origin))
+      pOrigin.className = 'info'
+      pOrigin.insertAdjacentElement('afterbegin', pOriginSpan)
+      pLastLocationSpan.appendChild(document.createTextNode('Last known location: '))
+      pLastLocationSpan.className = 'info text'
+      pLastLocation.appendChild(document.createTextNode(lastLocation))
+      pLastLocation.className = 'info'
+      pLastLocation.insertAdjacentElement('afterbegin', pLastLocationSpan)
+      pEpisodeSpan.appendChild(document.createTextNode('First appearance: '))
+      pEpisodeSpan.className = 'info text'
+      pEpisode.appendChild(document.createTextNode('"' + episodeName + '" - ' + episodeCode))
+      pEpisode.className = 'info'
+      pEpisode.insertAdjacentElement('afterbegin', pEpisodeSpan)
+      pTotalEpSpan.appendChild(document.createTextNode('Total episodes appearance: '))
+      pTotalEpSpan.className = 'info text'
+      pTotalEp.appendChild(document.createTextNode(totalEpisodes))
+      pTotalEp.className = 'info'
+      pTotalEp.insertAdjacentElement('afterbegin', pTotalEpSpan)
+      div.appendChild(img)
+      textdiv.append(pOrigin, pLastLocation, pEpisode, pTotalEp)
+      document.querySelector('#modalBody').append(div, textdiv)
+    })
+    
+  
 })
 
 window.onload = () => {
-  $('#onload').fadeOut()
-  $('body').removeClass('hidden')
+  
+  $('page').removeClass('hidden')
   getData()
 }
 
