@@ -1,48 +1,108 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>Rick and Morty</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css" />
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css" />
+  <title>Rick and Morty</title>
 </head>
 
-<body onload="getData()">
-  
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel"></h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+<body>
+
+  <div id='onload' class="wrapper">
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="shadow"></div>
+    <div class="shadow"></div>
+    <div class="shadow"></div>
+  </div>
+
+  <page class='hidden'>
+    <nav class="navbar navbar-expand-sm fixed-top">
+      <img class="logo" src="img/Rick_and_Morty_logo.png">
+    </nav>
+    
+    <div class="searchnav">
+      <div class="toggle-container">
+        <span id="open" class="togglesidebar" onclick="openNav()">&#9776;</span>
+      </div>
+      <div id="sidebar">
+        <a class="closebtn" onclick="closeNav()" href="javascript:void(0)">&times;</a>
+        <a class="item-sidebar activeitem" href="index.html">Characters</a>
+        <a class="item-sidebar" href="location.html">Locations</a>
+      </div>
+      <div class="search-container">
+        <form id="form" class="form-floating mb-3" action="" method="get">
+          <input class="form-control" id='nameInput' type="text" placeholder="Search..." name="name">
+          <label for="nameInput">Search...</label>
+          <button id='nameButton' type="submit" onclick="filter()">
+            <ion-icon name="search-sharp" size="large"></ion-icon>
+          </button>
+        </form>
+      </div>
+    </div>
+    
+    <div class="main-container">
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel"></h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div id="modalload" class="wrapper">
+              <div class="circle"></div>
+              <div class="circle"></div>
+              <div class="circle"></div>
+              <div class="shadow"></div>
+              <div class="shadow"></div>
+              <div class="shadow"></div>
+            </div>
+            <div id="modalBody" class="modal-body hidden"></div>
+          </div>
         </div>
-        <div id="modalBody" class="modal-body">
+      </div>
+    
+      <div class="margin">
+        <div id="error">
+          <label id="error-message" class="hidden"></label>
+        </div>
+        <div id="main-cards" class="main hidden">
+          <section class="cards"></section>
         </div>
       </div>
     </div>
-  </div>
+    <footer id="pagination-container">
+      <nav id="nav" aria-label="Page navigation example">
+        <ul id="page-container" class="container pagination justify-content-center">
+        </ul>
+      </nav>
+    </footer>
+  </page>
 
-    <header>
-        <div>
-            <img class="logo" src="img/Rick_and_Morty_logo.png" width="300" />
-        </div>
-    </header>
-
-    <div id="body">
-        <ul id="list-characters" class="container"></ul>
-    </div>
-    <div id="pagination-container">
-        <nav id="nav" aria-label="Page navigation example">
-          <ul id="page-container" class="pagination justify-content-center">
-          </ul>
-        </nav>
-    </div>
-    
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="./index.js"></script>
   <script src="./pagination.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
+
 </html>
